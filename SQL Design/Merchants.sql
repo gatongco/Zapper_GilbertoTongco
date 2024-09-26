@@ -1,0 +1,31 @@
+USE [Zapper]
+GO
+
+/****** Object:  Table [dbo].[Merchants]    Script Date: 26/09/2024 3:08:16 pm ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Merchants](
+	[MerchantID] [int] IDENTITY(1,1) NOT NULL,
+	[MerchantName] [nvarchar](100) NOT NULL,
+	[ContactName] [nvarchar](50) NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[PhoneNumber] [nvarchar](15) NULL,
+	[CreatedAt] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MerchantID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Merchants] ADD  DEFAULT (getdate()) FOR [CreatedAt]
+GO
+
